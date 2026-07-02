@@ -53,7 +53,7 @@ const deleteComment = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    if (comment.userId.toString() !== currentUserId.toString() && user?.role !== 'admin') {
+    if (comment.userId.toString() !== currentUserId!.toString() && user?.role !== 'admin') {
       res.status(403).json({
         code: 'AuthenticationError',
         message: 'Access denied, insufficient permission',
